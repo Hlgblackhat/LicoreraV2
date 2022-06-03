@@ -27,7 +27,7 @@
 							if ($result > 0) {
 								while ($data = mysqli_fetch_assoc($query)) { ?>
 									<tr>
-										<td><?php echo $data['codproducto']; ?></td>
+										<td><?php echo $data['ID']; ?></td>
 										<td><?php echo $data['descripcion']; ?></td>
 										<td><?php echo $data['precio']; ?></td>
 										<td><?php echo $data['existencia']; ?></td>

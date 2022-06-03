@@ -172,7 +172,7 @@ INSERT INTO `configuracion` (`id`, `dni`, `nombre`, `razon_social`, `telefono`, 
 CREATE TABLE `detallefactura` (
   `correlativo` bigint(20) NOT NULL,
   `nofactura` bigint(20) NOT NULL,
-  `codproducto` int(11) NOT NULL,
+  `codproducto` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
   `cantidad` int(11) NOT NULL,
   `precio_venta` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -186,7 +186,7 @@ CREATE TABLE `detallefactura` (
 CREATE TABLE `detalle_temp` (
   `correlativo` int(11) NOT NULL,
   `token_user` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `codproducto` int(11) NOT NULL,
+  `codproducto` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
   `cantidad` int(11) NOT NULL,
   `precio_venta` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -199,7 +199,7 @@ CREATE TABLE `detalle_temp` (
 
 CREATE TABLE `entradas` (
   `correlativo` int(11) NOT NULL,
-  `codproducto` int(11) NOT NULL,
+  `codproducto` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
   `fecha` datetime NOT NULL DEFAULT current_timestamp(),
   `cantidad` int(11) NOT NULL,
   `precio` decimal(10,2) NOT NULL,
@@ -228,7 +228,8 @@ CREATE TABLE `factura` (
 --
 
 CREATE TABLE `producto` (
-  `codproducto` int(11) NOT NULL,
+  `ID` int(11) NOT NULL,
+	`codproducto` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
   `descripcion` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
   `proveedor` int(11) NOT NULL,
   `precio` decimal(10,2) NOT NULL,
@@ -240,11 +241,8 @@ CREATE TABLE `producto` (
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`codproducto`, `descripcion`, `proveedor`, `precio`, `existencia`, `usuario_id`) VALUES
-(1, 'Laptop lenovo', 1, '1560.00', 49, 2),
-(2, 'Televisor', 1, '2500.00', 79, 1),
-(6, 'Impresora', 1, '800.00', 0, 1),
-(7, 'Gaseosa', 3, '1500.00', 5, 1);
+INSERT INTO `producto` (`ID`, `codproducto`, `descripcion`, `proveedor`, `precio`, `existencia`, `usuario_id`) VALUES
+(1, 'lap', 'Laptop lenovo', 1, '1560.00', 49, 2);
 
 -- --------------------------------------------------------
 
@@ -266,8 +264,8 @@ CREATE TABLE `proveedor` (
 --
 
 INSERT INTO `proveedor` (`codproveedor`, `proveedor`, `contacto`, `telefono`, `direccion`, `usuario_id`) VALUES
-(1, 'Open Services', '965432143', 9645132, 'Lima', 2),
-(3, 'Lineo', '25804', 9865412, 'Lima', 2);
+(1, 'prov1', '965432143', 9645132, 'Lima', 2),
+(3, 'prov2', '25804', 9865412, 'Lima', 2);
 
 -- --------------------------------------------------------
 
@@ -308,8 +306,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idusuario`, `nombre`, `correo`, `usuario`, `clave`, `rol`) VALUES
-(1, 'Vida Informatico', 'vida@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1),
-(6, 'Maria Perez Miranda', 'maria@gmail.com', 'maria', '263bce650e68ab4e23f28263760b9fa5', 3);
+(1, 'Administrador', 'admin@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1);
 
 --
 -- Índices para tablas volcadas
