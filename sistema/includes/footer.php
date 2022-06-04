@@ -8,7 +8,7 @@
           </a>
         </li>
         <li>
-          <a href="https://instagram.com/vida_informatico/">
+          <a href="https://">
             Síguenos en Instagram
           </a>
         </li>

@@ -7,10 +7,15 @@
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+DROP DATABASE IF EXISTS `sis_venta`;
+CREATE DATABASE IF NOT EXISTS `sis_venta` /*!40100 DEFAULT CHARACTER SET utf8mb4*/;
+USE `sis_venta`;
+--
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -22,6 +27,7 @@ SET time_zone = "+00:00";
 --
 
 DELIMITER $$
+
 --
 -- Procedimientos
 --
@@ -36,22 +42,22 @@ DECLARE pre_actual decimal(10,2);
 DECLARE actual_existencia int;
 DECLARE actual_precio decimal(10,2);
 
-SELECT precio, existencia INTO actual_precio, actual_existencia FROM producto WHERE codproducto = codigo;
+SELECT precio, existencia INTO actual_precio, actual_existencia FROM producto WHERE ID = codigo;
 
 SET nueva_existencia = actual_existencia + n_cantidad;
 SET nuevo_total = n_precio;
 SET nuevo_precio = nuevo_total;
 
-UPDATE producto SET existencia = nueva_existencia, precio = nuevo_precio WHERE codproducto = codigo;
+UPDATE producto SET existencia = nueva_existencia, precio = nuevo_precio WHERE ID = codigo;
 
 SELECT nueva_existencia, nuevo_precio;
 END$$
 
-CREATE PROCEDURE `add_detalle_temp` (`codigo` INT, `cantidad` INT, `token_user` VARCHAR(50))  BEGIN
+CREATE PROCEDURE `add_detalle_temp` (`codigo` VARCHAR(11), `cantidad` INT, `token_user` VARCHAR(50))  BEGIN
 DECLARE precio_actual decimal(10,2);
-SELECT precio INTO precio_actual FROM producto WHERE codproducto = codigo;
+SELECT precio INTO precio_actual FROM producto WHERE codproducto = `codigo`;
 INSERT INTO detalle_temp(token_user, codproducto, cantidad, precio_venta) VALUES (token_user, codigo, cantidad, precio_actual);
-SELECT tmp.correlativo, tmp.codproducto, p.descripcion, tmp.cantidad, tmp.precio_venta FROM detalle_temp tmp INNER JOIN producto p ON tmp.codproducto = p.codproducto WHERE tmp.token_user = token_user;
+SELECT tmp.correlativo, tmp.ID, p.descripcion, tmp.cantidad, tmp.precio_venta FROM detalle_temp tmp INNER JOIN producto p ON tmp.ID = p.ID WHERE tmp.token_user = token_user;
 END$$
 
 CREATE PROCEDURE `data` ()  BEGIN
@@ -82,14 +88,14 @@ DECLARE total DECIMAL(10,2);
 DECLARE nueva_existencia int;
 DECLARE existencia_actual int;
 
-DECLARE tmp_cod_producto int;
+DECLARE tmp_cod_producto VARCHAR(11);
 DECLARE tmp_cant_producto int;
 DECLARE a int;
 SET a = 1;
 
 CREATE TEMPORARY TABLE tbl_tmp_tokenuser(
 	id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    cod_prod BIGINT,
+    cod_prod VARCHAR(11),
     cant_prod int);
 SET registros = (SELECT COUNT(*) FROM detalle_temp WHERE token_user = token);
 IF registros > 0 THEN
@@ -118,8 +124,6 @@ END$$
 DELIMITER ;
 
 -- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `cliente`
 --
 
@@ -137,7 +141,7 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`idcliente`, `dni`, `nombre`, `telefono`, `direccion`, `usuario_id`) VALUES
-(1, 123545, 'Pubico en general', 925491523, 'Lima', 1);
+(1, 123, 'Clientex', 987654321, 'cartagena', 1);
 
 -- --------------------------------------------------------
 
@@ -161,7 +165,7 @@ CREATE TABLE `configuracion` (
 --
 
 INSERT INTO `configuracion` (`id`, `dni`, `nombre`, `razon_social`, `telefono`, `email`, `direccion`, `igv`) VALUES
-(1, 2580, 'Vida Informático', 'Vida Informático', 925491523, 'naju@vidainformatico.com', 'Lima - Perú', '1.18');
+(1, 2580, 'Licores Cismar', 'Razonx', 123456789, 'correodelicorescismar@gmail.com', 'Cartagena-colombia', '12345');
 
 -- --------------------------------------------------------
 
@@ -242,7 +246,8 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`ID`, `codproducto`, `descripcion`, `proveedor`, `precio`, `existencia`, `usuario_id`) VALUES
-(1, 'lap', 'Laptop lenovo', 1, '1560.00', 49, 2);
+(1, 'agua', 'agua', 1, '1560.00', 49, 2),
+(8, 'cerv', 'cerveza', 1, '1560.00', 49, 2);
 
 -- --------------------------------------------------------
 
@@ -264,8 +269,8 @@ CREATE TABLE `proveedor` (
 --
 
 INSERT INTO `proveedor` (`codproveedor`, `proveedor`, `contacto`, `telefono`, `direccion`, `usuario_id`) VALUES
-(1, 'prov1', '965432143', 9645132, 'Lima', 2),
-(3, 'prov2', '25804', 9865412, 'Lima', 2);
+(1, 'prov1', '965432143', 9645132, 'Cartagena', 2),
+(3, 'prov2', '25804', 9865412, 'Cartagena', 2);
 
 -- --------------------------------------------------------
 
@@ -352,7 +357,7 @@ ALTER TABLE `factura`
 -- Indices de la tabla `producto`
 --
 ALTER TABLE `producto`
-  ADD PRIMARY KEY (`codproducto`);
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indices de la tabla `proveedor`
@@ -416,7 +421,7 @@ ALTER TABLE `factura`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `codproducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`

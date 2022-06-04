@@ -8,7 +8,7 @@ if (!empty($_POST)) {
   if ($_POST['action'] == 'infoProducto') {
       $data = "";
     $producto_id = $_POST['producto'];
-    $query = mysqli_query($conexion, "SELECT codproducto, descripcion, precio, existencia FROM producto WHERE codproducto = $producto_id");
+    $query = mysqli_query($conexion, "SELECT ID, codproducto, descripcion, precio, existencia FROM producto WHERE codproducto = '$producto_id'");
 
     $result = mysqli_num_rows($query);
     if ($result > 0) {
@@ -80,7 +80,7 @@ if ($_POST['action'] == 'addProductoDetalle') {
     $token = md5($_SESSION['idUser']);
     $query_iva = mysqli_query($conexion, "SELECT igv FROM configuracion");
     $result_iva = mysqli_num_rows($query_iva);
-    $query_detalle_temp = mysqli_query($conexion, "CALL add_detalle_temp ($codproducto,$cantidad,'$token')");
+    $query_detalle_temp = mysqli_query($conexion, "CALL add_detalle_temp ('$codproducto',$cantidad,'$token')");
     $result = mysqli_num_rows($query_detalle_temp);
 
     $detalleTabla = '';
@@ -89,7 +89,7 @@ if ($_POST['action'] == 'addProductoDetalle') {
     $total = 0;
     $arrayData = array();
     if ($result > 0) {
-        
+
     if ($result_iva > 0) {
       $info_iva = mysqli_fetch_assoc($query_iva);
       $iva = $info_iva['igv'];

@@ -8,12 +8,13 @@
               </div>';
     } else {
       $proveedor = $_POST['proveedor'];
+      $cod = $_POST['cod'];
       $producto = $_POST['producto'];
       $precio = $_POST['precio'];
       $cantidad = $_POST['cantidad'];
       $usuario_id = $_SESSION['idUser'];
 
-      $query_insert = mysqli_query($conexion, "INSERT INTO producto(proveedor,descripcion,precio,existencia,usuario_id) values ('$proveedor', '$producto', '$precio', '$cantidad','$usuario_id')");
+      $query_insert = mysqli_query($conexion, "INSERT INTO producto(proveedor,descripcion,precio,existencia,usuario_id,codproducto) values ('$proveedor', '$producto', '$precio', '$cantidad','$usuario_id','$cod')");
       if ($query_insert) {
         $alert = '<div class="alert alert-primary" role="alert">
                 Producto Registrado
@@ -64,6 +65,10 @@
          <div class="form-group">
            <label for="producto">Producto</label>
            <input type="text" placeholder="Ingrese nombre del producto" name="producto" id="producto" class="form-control">
+         </div>
+         <div class="form-group">
+           <label for="cod">ID del Producto</label>
+           <input type="text" placeholder="Ingrese la ID del producto" name="cod" id="cod" class="form-control">
          </div>
          <div class="form-group">
            <label for="precio">Precio</label>

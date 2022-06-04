@@ -274,7 +274,7 @@ $('#add_product_venta').click(function(e) {
       async: true,
       data: {action:action,producto:codproducto,cantidad:cantidad},
       success: function(response) {
-        
+
         if (response != 'error') {
           var info = JSON.parse(response);
           $('#detalle_venta').html(info.detalle);
@@ -482,7 +482,7 @@ function del_product_detalle(correlativo) {
       viewProcesar();
     },
     error: function(error) {
-      
+
     }
   });
 }
