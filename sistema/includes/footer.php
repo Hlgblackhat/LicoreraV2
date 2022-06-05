@@ -15,7 +15,7 @@
       </ul>
     </nav>
     <div class="copyright" id="copyright">
-      <p>Vida Informático</p>
+      <p>Licores Cismar</p>
      </div>
   </div>
 </footer>

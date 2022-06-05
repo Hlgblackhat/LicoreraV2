@@ -58,7 +58,7 @@ if ($result_data > 0) {
     -->
 			<div class="logo">
 				<a href="index.php" class="simple-text logo-mini">
-					V - I
+					LC
 				</a>
 				<a href="index.php" class="simple-text logo-normal">
 					Licores Cismar
@@ -113,7 +113,7 @@ if ($result_data > 0) {
 							</button>
 						</div>
 						<a class="navbar-brand" href="#">Sistema Venta</a>
-						<strong><?php echo fechaPeru(); ?></strong>
+						<strong><?php echo fecha(); ?></strong>
 					</div>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-bar navbar-kebab"></span>
