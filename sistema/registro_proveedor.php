@@ -13,12 +13,12 @@ if (!empty($_POST)) {
         $telefono = $_POST['telefono'];
         $Direccion = $_POST['direccion'];
         $usuario_id = $_SESSION['idUser'];
-        $query = mysqli_query($conexion, "SELECT * FROM proveedor where contacto = '$contacto'");
+        $query = mysqli_query($conexion, "SELECT * FROM proveedor where proveedor = '$proveedor'");
         $result = mysqli_fetch_array($query);
 
         if ($result > 0) {
             $alert = '<div class="alert alert-danger" role="alert">
-                        El Ruc ya esta registrado
+                        El Proveedor ya esta registrado
                     </div>';
         }else{
         
@@ -55,7 +55,7 @@ mysqli_close($conexion);
                         <input type="text" placeholder="Ingrese nombre" name="proveedor" id="nombre" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="contacto">RUC</label>
+                        <label for="contacto">CONTACTO</label>
                         <input type="text" placeholder="Ingrese nombre del contacto" name="contacto" id="contacto" class="form-control">
                     </div>
                     <div class="form-group">
