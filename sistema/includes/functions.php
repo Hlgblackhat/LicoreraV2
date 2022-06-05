@@ -1,7 +1,7 @@
 <?php
-	date_default_timezone_set('America/Lima');
+	date_default_timezone_set('America/Bogota');
 
-	function fechaPeru(){
+	function fecha(){
 		$mes = array("","Enero",
 					  "Febrero",
 					  "Marzo",
