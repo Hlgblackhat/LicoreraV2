@@ -11,8 +11,8 @@ if (!empty($_POST)) {
     $query = mysqli_query($conexion, "SELECT ID, codproducto, descripcion, precio, existencia FROM producto WHERE codproducto = '$producto_id'");
 
     $result = mysqli_num_rows($query);
-    if ($result > 0) {
-      $data = mysqli_fetch_assoc($query);
+    $data = mysqli_fetch_assoc($query);
+    if ($result > 0 && $data['existencia'] > 0 ) {
       echo json_encode($data,JSON_UNESCAPED_UNICODE);
       exit;
     }else {
