@@ -131,7 +131,7 @@ CREATE TABLE `cliente` (
   `idcliente` int(11) NOT NULL,
   `dni` int(8) NOT NULL,
   `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `telefono` int(15) NOT NULL,
+  `telefono` varchar(22) COLLATE utf8_spanish_ci NOT NULL,
   `direccion` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
   `usuario_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -154,7 +154,7 @@ CREATE TABLE `configuracion` (
   `dni` int(11) NOT NULL,
   `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `razon_social` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `telefono` int(11) NOT NULL,
+  `telefono` varchar(22) COLLATE utf8_spanish_ci NOT NULL,
   `email` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `direccion` text COLLATE utf8_spanish_ci NOT NULL,
   `igv` decimal(10,2) NOT NULL
@@ -259,7 +259,7 @@ CREATE TABLE `proveedor` (
   `codproveedor` int(11) NOT NULL,
   `proveedor` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `contacto` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `telefono` int(11) NOT NULL,
+  `telefono` varchar(22) COLLATE utf8_spanish_ci NOT NULL,
   `direccion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `usuario_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
