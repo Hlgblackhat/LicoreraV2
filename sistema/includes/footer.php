@@ -3,19 +3,24 @@
     <nav>
       <ul>
         <li>
-          <a href="https://">
+          <a href="https://www.facebook.com/LicoresCismar/" target="_blank">
             Síguenos en Facebook
           </a>
         </li>
         <li>
-          <a href="https://">
+          <a href="https://www.instagram.com/licorescismar/" target="_blank ">
             Síguenos en Instagram
+          </a>
+        </li>
+        <li>
+          <a href="https://wa.me/message/O4SNLSGFEL2FE1" target="_blank ">
+            WhatsApp
           </a>
         </li>
       </ul>
     </nav>
     <div class="copyright" id="copyright">
-      <p>Licores Cismar</p>
+      <p><a href="index.php">Licores Cismar</a></p>
      </div>
   </div>
 </footer>
