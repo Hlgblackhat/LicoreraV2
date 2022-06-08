@@ -53,12 +53,9 @@ if ($result_data > 0) {
 <body class="">
 	<div class="wrapper ">
 		<div class="sidebar" data-color="orange">
-			<!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-    -->
 			<div class="logo">
 				<a href="index.php" class="simple-text logo-mini">
-					LC
+
 				</a>
 				<a href="index.php" class="simple-text logo-normal">
 					Licores Cismar
@@ -124,29 +121,21 @@ if ($result_data > 0) {
 						<ul class="navbar-nav">
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="now-ui-icons location_world"></i>
+									<i class="now-ui-icons users_single-02"></i>
 									<p>
-										<span class="d-lg-none d-md-block">Some Actions</span>
+										<span class="d-lg-none d-md-block">Mas Acciones</span>
 									</p>
 								</a>
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-									<a class="dropdown-item" href="#"><?php echo $_SESSION['user']; ?></a>
+									<a class="dropdown-item" href="#"><b>Username:</b> <?php echo $_SESSION['user']; ?></a>
 									<?php if ($_SESSION['rol'] == 1) {
 										$rol = "Administrador";
 									} else {
 										$rol = "Vendedor";
 									} ?>
-									<a class="dropdown-item" href="#"><?php echo $rol; ?></a>
-									<a class="dropdown-item" href="salir.php">Salir</a>
+									<a class="dropdown-item" href="#"><b>Rol:</b> <?php echo $rol; ?></a>
+									<a class="dropdown-item" href="salir.php"><b>Salir</b></a>
 								</div>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#pablo">
-									<i class="now-ui-icons users_single-02"></i>
-									<p>
-										<span class="d-lg-none d-md-block">Cuenta</span>
-									</p>
-								</a>
 							</li>
 						</ul>
 					</div>
