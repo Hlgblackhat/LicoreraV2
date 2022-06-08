@@ -28,7 +28,7 @@
 		$pdf->Ln();
 		$pdf->image("img/logo.jpeg", 50, 18, 15, 15, 'JPG');
 		$pdf->SetFont('Arial', 'B', 7);
-		$pdf->Cell(15, 5, "Ruc: ", 0, 0, 'L');
+		$pdf->Cell(15, 5, "NIT/RUT: ", 0, 0, 'L');
 		$pdf->SetFont('Arial', '', 7);
 		$pdf->Cell(20, 5, $resultado['dni'], 0, 1, 'L');
 		$pdf->SetFont('Arial', 'B', 7);
@@ -78,7 +78,7 @@
 		$pdf->Cell(76, 5, 'Total: ' . number_format($result_venta['totalfactura'], 2, '.', ','), 0, 1, 'R');
 		$pdf->Ln();
 		$pdf->SetFont('Arial', '', 7);
-		$pdf->Cell(80, 5, utf8_decode("Gracias por su preferencia"), 0, 1, 'C');
+		$pdf->Cell(80, 5, utf8_decode("Gracias por su compra,  vuelva pronto."), 0, 1, 'C');
 		$pdf->Output("compra.pdf", "I");
 		}
 
