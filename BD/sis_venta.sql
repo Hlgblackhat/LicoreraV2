@@ -157,7 +157,7 @@ CREATE TABLE `configuracion` (
   `telefono` varchar(22) COLLATE utf8_spanish_ci NOT NULL,
   `email` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `direccion` text COLLATE utf8_spanish_ci NOT NULL,
-  `igv` decimal(10,2) NOT NULL
+  `igv` decimal(10,2)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -165,7 +165,7 @@ CREATE TABLE `configuracion` (
 --
 
 INSERT INTO `configuracion` (`id`, `dni`, `nombre`, `razon_social`, `telefono`, `email`, `direccion`, `igv`) VALUES
-(1, 2580, 'Licores Cismar', 'Razonx', 123456789, 'correodelicorescismar@gmail.com', 'Cartagena-colombia', '12345');
+(1, 454959881, 'Licores Cismar', 'venta de bebidas alcoholicas', 3173113767, 'puntofriocismar@gmail.com', 'Cartagena-colombia', '5');
 
 -- --------------------------------------------------------
 
@@ -246,8 +246,15 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`ID`, `codproducto`, `descripcion`, `proveedor`, `precio`, `existencia`, `usuario_id`) VALUES
-(1, 'agua', 'agua', 1, '1560.00', 49, 2),
-(8, 'cerv', 'cerveza', 1, '1560.00', 49, 2);
+  (1, 'RM3A2L', 'Ron Medellín 3 años 2 Litros', 1, 96800.00, 10, 1),
+	(2, 'RM3A1L', 'Ron Medellín 3 años 1 Litro', 1, 49414.00, 10, 1),
+	(3, 'RM3A75CL', 'Ron Medellin 3 años 750 mL', 1, 39795.00, 10, 1),
+	(4, 'RM8A75CL', 'Ron Medellin 8 años 750 ml', 1, 65000.00, 5, 1),
+	(5, 'WJWRL1L', 'Johnnie Walker Red Label 1 Litro', 3, 71886.00, 10, 1),
+	(6, 'WJWRL70CL', 'Johnnie Walker Red Label 700 mL', 3, 53820.00, 10, 1),
+	(7, 'WBAW1L', 'Black & White 1 Litro', 3, 60400.00, 10, 1),
+	(8, 'WBAW70CL', 'Black & White 700 mL', 3, 44981.00, 10, 1),
+	(9, 'VSL75CL', 'Vodka Smirnoff Lulo 750 mL', 3, 34418.00, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -269,8 +276,8 @@ CREATE TABLE `proveedor` (
 --
 
 INSERT INTO `proveedor` (`codproveedor`, `proveedor`, `contacto`, `telefono`, `direccion`, `usuario_id`) VALUES
-(1, 'prov1', '965432143', 9645132, 'Cartagena', 2),
-(3, 'prov2', '25804', 9865412, 'Cartagena', 2);
+(1, 'DISTANCO', 'Maria Claros', '3184361725', 'Cartagena', 2),
+(3, 'MEICO', 'Vendedora Marisol', '3227222503', 'Cartagena', 2);
 
 -- --------------------------------------------------------
 
@@ -311,7 +318,11 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idusuario`, `nombre`, `correo`, `usuario`, `clave`, `rol`) VALUES
-(1, 'Administrador', 'admin@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1);
+(1, 'Administrador', 'admin@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1),
+	(9, 'Haider Lopez', 'hlopezg@unicartagena.edu.co', 'hlopezg', '490b6c600e1a306bf2feefc7ee9631b3', 1),
+	(10, 'Elian Osorio', 'eosoriog@unicartagena.edu.co', 'eosoriog', '85d606c4530d98879e87f1be4aa56fc2', 2),
+	(11, 'José Pardo', 'jpardop1@unicartagena.edu.co', 'pardo', 'cde00de31aa45fd3e47c85dd57765a2e', 2),
+	(12, 'Jose de avila', 'jdeavilap@unicartagena.edu.co', 'avila', '56d20f8529fae677b86f853d2ec285c8', 2);
 
 --
 -- Índices para tablas volcadas
