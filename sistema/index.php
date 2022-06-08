@@ -145,7 +145,7 @@
 					<div class="card-body">
 						<form action="empresa.php" method="post" id="frmEmpresa" class="p-3">
 							<div class="form-group">
-								<label>Ruc:</label>
+								<label>NIT/RUT:</label>
 								<input type="number" name="txtDni" value="<?php echo $dni; ?>" id="txtDni" placeholder="Dni de la Empresa" required class="form-control">
 							</div>
 							<div class="form-group">
@@ -169,7 +169,7 @@
 								<input type="text" name="txtDirEmpresa" class="form-control" value="<?php echo $dirEmpresa; ?>" id="txtDirEmpresa" placeholder="Dirreción de la Empresa" required>
 							</div>
 							<div class="form-group">
-								<label>IGV (%):</label>
+								<label>IVA (%):</label>
 								<input type="text" name="txtIgv" class="form-control" value="<?php echo $igv; ?>" id="txtIgv" placeholder="IGV de la Empresa" required>
 							</div>
 							<?php echo isset($alert) ? $alert : ''; ?>
@@ -190,7 +190,7 @@
 					<div class="card-body">
 						<div class="p-3">
 							<div class="form-group">
-								<strong>Ruc:</strong>
+								<strong>NIT/RUT:</strong>
 								<h6><?php echo $dni; ?></h6>
 							</div>
 							<div class="form-group">
@@ -214,7 +214,7 @@
 								<h6><?php echo $dirEmpresa; ?></h6>
 							</div>
 							<div class="form-group">
-								<strong>IGV (%):</strong>
+								<strong>IVA (%):</strong>
 								<h6><?php echo $igv; ?></h6>
 							</div>
 
