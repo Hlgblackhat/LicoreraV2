@@ -55,7 +55,7 @@ if ($result_data > 0) {
 		<div class="sidebar" data-color="orange">
 			<div class="logo">
 				<a href="index.php" class="simple-text logo-mini">
-
+					LC
 				</a>
 				<a href="index.php" class="simple-text logo-normal">
 					Licores Cismar
